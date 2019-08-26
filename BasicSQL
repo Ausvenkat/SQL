@@ -1,0 +1,42 @@
+Table1: EmployeeSalary
++ — —-+ -— — + — — -+
+| EmpId | Project | Salary |
++ — — +- — — + — — — -+
+| 200 | Project1 | 800000 |
+| 300 | Project2 | 100000 |
+| 400 | Project1 | 1200000 |
++ — -+ —-— — + — — — — -+
+Table2: EmployeeDetails
++ —— — -+ —— — -+ — — -+ — — -+ — — -+ — —+
+| EmpId | Fname | LName | LeaderId | Dept | DOJ |
++ — — -+ — — — -+ —— — + — — -+ — — -+ — —+
+| 200 | Arthur | Curry | 300 | Actor | 01/31/2014|
+| 300 | Frank | Miller | 678 | Director | 01/30/2015|
+| 400 | Tony | Stark | 666 | Actor | 27/11/2019|
+| 500 | Jhon | Troval | 656 | Producer | 08/10/2019|
+| 600 | Tom | Hanks | 526 | Actor |17/01/2018|
++ — — -+ — — -+ — —— -+ — — -+ — — -+ ——+
+
+1)Write a SQL query to create EmployeeSalary & EmployeeDetails?
+
+create table  EmployeeSalary(EmpId integer, Project varchar(100),Salary integer);
+create table  EmployeeDetails(EmpId integer, Fname varchar(100),Lname varchar(100),LeaderId integer,Dept varchar(100),DOJ varchar(100));
+
+2)Write a SQL query to insert data into EmployeeSalary & EmployeeDetails?
+
+insert into EmployeeSalary(EmpId, Project , Salary) values(200, "Project1",800000);
+insert into EmployeeSalary(EmpId, Project , Salary) values(300, "Project2",100000);
+insert into EmployeeSalary(EmpId, Project , Salary) values(400, "Project3",1200000);
+
+insert into EmployeeDetails(EmpId, Fname , Lname , LeaderId , Dept , DOJ) values(200, "Arthur","curry",300,"Actor","01/31/2014");
+insert into EmployeeDetails(EmpId, Fname , Lname , LeaderId , Dept , DOJ) values(300, "Frank","Miller",678,"Director","01/30/2015");
+insert into EmployeeDetails(EmpId, Fname , Lname , LeaderId , Dept , DOJ) values(400, "Tony","Stark",666,"Actor","27/11/2019");
+insert into EmployeeDetails(EmpId, Fname , Lname , LeaderId , Dept , DOJ) values(500, "Jhon","Troval",656,"Producer","08/10/2019");
+insert into EmployeeDetails(EmpId, Fname , Lname , LeaderId , Dept , DOJ) values(600, "Tom","Hanks",526,"Actor","17/01/2018");
+
+3)Write a SQL query to find current date-time?
+
+SELECT GETDATE();
+
+4)Write a SQL query to fetch top n records from EmployeeSalary?
+
