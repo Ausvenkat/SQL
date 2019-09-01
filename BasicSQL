@@ -34,9 +34,94 @@ insert into EmployeeDetails(EmpId, Fname , Lname , LeaderId , Dept , DOJ) values
 insert into EmployeeDetails(EmpId, Fname , Lname , LeaderId , Dept , DOJ) values(500, "Jhon","Troval",656,"Producer","08/10/2019");
 insert into EmployeeDetails(EmpId, Fname , Lname , LeaderId , Dept , DOJ) values(600, "Tom","Hanks",526,"Actor","17/01/2018");
 
-3)Write a SQL query to find current date-time?
+3)Write a SQL query to add a extra column with name “Comments” — varchar to EmployeeSalary & EmployeeDetails.??
+
+ALTER TABLE EmployeeSalary ADD Comments varchar(100);
+ALTER TABLE EmployeeDetails ADD Comments varchar(100);
+
+4)Write a SQL query to find current date-time?
 
 SELECT GETDATE();
 
-4)Write a SQL query to fetch top n records from EmployeeSalary?
+5)Write a SQL query to fetch top n records from EmployeeSalary?
+
+select * from EmployeeSalary order by salary desc;
+
+6)Write a query to fetch only the first name EmployeeDetails table using the alias name as <WORKER_NAME>.
+
+select fname "worker_name" from EmployeeDetails;
+
+7)Write an SQL Query to find name of employee whose name Start with ‘T’??
+
+select Fname from EmployeeDetails where Fname like "T%";
+
+8)Write a SQL query to find all Employees whose name contains the word “on”??
+
+select * from EmployeeDetails where Fname like "%on%";
+
+9)Write a SQL query to fetch Fname from EmployeeDetails table in upper case??
+
+select upper(Fname) from EmployeeDetails;
+
+10)Write a SQL query to fetch the count of employees working in project ‘Project1’??
+
+select counr(*) fromm EmployeeSalary where Project = 'Project1';
+
+11)Write a SQL query to fetch employee names having salary greater than or equal to 100000 and less than or equal 800000.??
+
+select * from EmployeeDetails inner join EmployeeSalary on EmployeeDetails.EmpId=EmployeeSalary.EmpId where Salary>=100000 and Salary<=800000;
+
+12)Write SQL query to find the nth highest salary from EmployeeSalary??
+
+select Salary from EmployeeSalary order by Salary desc limit 1;
+
+13)Write SQL query to find the 3rd highest salary from table without using TOP/limit keyword??
+
+select * from EmployeeSalary as e1 where 2=(select count(distinct Salary)from EmployeeSalary as e2 where e2.Salary>e1.Salary);
+
+14)Write a SQL query to fetch project-wise count of employees sorted by project’s count in descending order??
+
+select Project, count(EmpId) EmpProjectCount from EmployeeSalary group by Project order by EmpProjectCount desc;
+
+15)Write a query to fetch employee names and salary records. Return employee details even if the salary record is not present for the employee??
+
+select Fname,Salary from EmployeeDetails left join EmployeeSalary on EmployeeDetails.EmpId=EmployeeSalary.EmpId;
+
+16)Write a SQL query to fetch all employee records from EmployeeDetails table who have a salary record in EmployeeSalary table.??
+
+select * from EmployeeDetails where exists (select * from EmployeeSalary  WHERE  EmployeeDetails.EmpId = EmployeeSalary.EmpId);
+
+17)Write a SQL query to fetch duplicate records from EmployeeSalary.??
+
+select EmpId, Project, Salary, count(*) from EmployeeSalary group by EmpId, Project, Salary having count(*) > 1;
+
+18)Write a SQL query to create a new table with data and structure copied from EmployeeSalary.??
+
+CREATE TABLE Empsal AS SELECT  EmpId,Project,Salary FROM EmployeeSalary;
+
+19)Write a SQL query to create an empty table with same structure as EmployeeDetails.??
+
+create table Emp2 like EmployeeDetails;
+
+20)Write a SQL query to fetch common records between two tables — EmployeeDetails & EmployeeSalary .??
+
+
+
+21)Write a SQL query to fetch all the Employees details from EmployeeDetails table who joined in Year 2019.??
+
+select * from EmployeeDetails where DOJ like "%2019%";
+
+22)Write an SQL query to fetch the departments that have less than two people in it.??
+
+select Dept from EmployeeDetails group by Dept having count(*) < 2;
+
+23)Write an SQL query to print the name of employees having the highest salary in each department.??
+
+SELECT Fname,Salary,Dept from EmployeeDetails right join EmployeeSalary on EmployeeDetails.EmpId=EmployeeSalary.EmpId;
+
+24)Write an SQL query to fetch max & min salaries from a table in each department.??
+
+select max(Salary) ,min(Salary) from EmployeeSalary;
+
+25)Write SQL Query to find duplicate rows in a database? and then write SQL query to delete them???
 
